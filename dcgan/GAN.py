@@ -215,7 +215,7 @@ class GAN(object):
             start_batch_id = 0
 
             # save model
-            self.save(self.checkpoint_dir, counter)
+            # self.save(self.checkpoint_dir, counter)
 
             # show temporal results
             # self.visualize_results(epoch)
