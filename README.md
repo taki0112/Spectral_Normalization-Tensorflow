@@ -4,6 +4,7 @@
  ## Summary
  ![sn](./assests/sn.png)
  
+ ## Simple Code
  ```python
 def spectral_normed_weight(w, iteration=1):
     w_shape = w.shape.as_list()
