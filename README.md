@@ -40,7 +40,7 @@ def spectral_norm(w, iteration=1):
     w = tf.get_variable("kernel", shape=[kernel, kernel, x.get_shape()[-1], channels])
     b = tf.get_variable("bias", [channels], initializer=tf.constant_initializer(0.0))
 
-    x = tf.nn.conv2d(input=x, filter=spectral_normed_weight(w), strides=[1, stride, stride, 1]) + b
+    x = tf.nn.conv2d(input=x, filter=spectral_norm(w), strides=[1, stride, stride, 1]) + b
  ```
  
  ## Related works
