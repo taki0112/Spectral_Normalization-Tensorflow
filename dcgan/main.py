@@ -13,6 +13,7 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=64, help='The size of batch per gpu')
     parser.add_argument('--print_freq', type=int, default=300, help='Print frequency')
     parser.add_argument('--z_dim', type=int, default=100, help='Dimension of noise vector')
+    parser.add_argument('--sn', type=bool, default=False, help='using spectral norm')
     parser.add_argument('--img_size', type=int, default=64, help='The size of image')
 
     parser.add_argument('--sample_num', type=int, default=64, help='The number of sample images')

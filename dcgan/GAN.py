@@ -21,6 +21,7 @@ class GAN(object):
         self.batch_size = args.batch_size
         self.print_freq = args.print_freq
         self.z_dim = args.z_dim  # dimension of noise-vector
+        self.sn = args.sn
 
         self.sample_num = args.sample_num  # number of generated images to be saved
         self.test_num = args.test_num
@@ -60,7 +61,7 @@ class GAN(object):
                 # ch : 64 -> 128 -> 256 -> 512 -> 1024
                 # size : 32 -> 16 -> 8 -> 4 -> 2
 
-                x = conv(x, channels=ch*2, kernel=5, stride=2, pad=2, sn=True, scope='conv_'+str(i+1))
+                x = conv(x, channels=ch*2, kernel=5, stride=2, pad=2, sn=self.sn, scope='conv_'+str(i+1))
                 x = batch_norm(x, is_training, scope='batch_'+str(i))
                 x = lrelu(x)
 
@@ -69,7 +70,7 @@ class GAN(object):
             # [bs, 4, 4, 1024]
 
             x = flatten(x)
-            x = fully_conneted(x, 1, sn=True)
+            x = fully_conneted(x, 1, sn=self.sn)
 
             return x
 
@@ -241,8 +242,8 @@ class GAN(object):
 
     @property
     def model_dir(self):
-        return "{}_{}_{}_{}".format(
-            self.model_name, self.dataset, self.batch_size, self.z_dim)
+        return "{}_{}_{}_{}_{}".format(
+            self.model_name, self.dataset, self.batch_size, self.z_dim, self.sn)
 
     def save(self, checkpoint_dir, step):
         checkpoint_dir = os.path.join(checkpoint_dir, self.model_dir)
