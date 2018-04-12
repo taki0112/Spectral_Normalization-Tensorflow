@@ -42,5 +42,9 @@ def spectral_normed_weight(w, iteration=1):
 
     x = tf.nn.conv2d(input=x, filter=spectral_normed_weight(w), strides=[1, stride, stride, 1]) + b
  ```
+ 
+ ## Related works
+ * [Group Normalization-Tensorflow](https://github.com/taki0112/Group_Normalization-Tensorflow)
+ 
  ## Author
  Junho Kim
