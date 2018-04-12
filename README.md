@@ -2,7 +2,7 @@
  Simple Tensorflow Implementation of "Spectral Normalization for Generative Adversarial Networks" (ICLR 2018)
  
  ## Usage
- ```python
+ ```bash
  > python main.py --dataset mnist --sn True
  ```
  
