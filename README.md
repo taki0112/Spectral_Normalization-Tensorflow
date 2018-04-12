@@ -11,7 +11,7 @@
  
  ## Simple Code
  ```python
-def spectral_normed_weight(w, iteration=1):
+def spectral_norm(w, iteration=1):
     w_shape = w.shape.as_list()
     w = tf.reshape(w, [-1, w_shape[-1]])
 
