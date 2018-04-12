@@ -1,5 +1,5 @@
 # Spectral_Normalization-Tensorflow
- Simple Tensorflow Implementation of "Spectral Normalization for Generative Adversarial Networks" (ICLR 2018)
+ Simple Tensorflow Implementation of [Spectral Normalization for Generative Adversarial Networks](https://openreview.net/forum?id=B1QRgziT-&noteId=BkxnM1TrM) (ICLR 2018)
  
  ## Usage
  ```bash
