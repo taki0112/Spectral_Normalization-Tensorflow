@@ -21,10 +21,10 @@ def spectral_normed_weight(w, iteration=1):
 
     for i in range(iteration):
         v_ = tf.matmul(u, tf.transpose(w))
-        v_hat = _l2normalize(v_)
+        v_hat = l2_norm(v_)
 
         u_ = tf.matmul(v_hat, w)
-        u_hat = _l2normalize(u_)
+        u_hat = l2_norm(u_)
         u = u_hat
 
     sigma = tf.matmul(tf.matmul(v_hat, w), tf.transpose(u_hat))
