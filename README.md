@@ -1,6 +1,11 @@
 # Spectral_Normalization-Tensorflow
  Simple Tensorflow Implementation of "Spectral Normalization for Generative Adversarial Networks" (ICLR 2018)
  
+ ## Usage
+ ```python
+ > python main.py --dataset mnist --sn True
+ ```
+ 
  ## Summary
  ![sn](./assests/sn.png)
  
@@ -30,7 +35,7 @@ def spectral_normed_weight(w, iteration=1):
     return w_norm
  ```
  
- ## Usage
+ ## How to use
  ```python
     w = tf.get_variable("kernel", shape=[kernel, kernel, x.get_shape()[-1], channels])
     b = tf.get_variable("bias", [channels], initializer=tf.constant_initializer(0.0))
