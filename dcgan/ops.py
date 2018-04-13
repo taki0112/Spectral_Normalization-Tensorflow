@@ -41,9 +41,19 @@ def conv(x, channels, kernel=4, stride=2, pad=0, pad_type='zero', use_bias=True,
 
         return x
 
-
-def deconv(x, channels, kernel=4, stride=2, use_bias=True, scope='deconv_0'):
+def deconv(x, channels, kernel=4, stride=2, use_bias=True, sn=False, scope='deconv_0'):
     with tf.variable_scope(scope):
+        x_shape = x.get_shape().as_list()
+        output_shape = [x_shape[0], x_shape[1] * 2, x_shape[2] * 2, channels]
+        if sn:
+            w = tf.get_variable("kernel", shape=[kernel, kernel, channels, x.get_shape()[-1]], initializer=weight_init,
+                                regularizer=weight_regularizer)
+            x = tf.nn.conv2d_transpose(x, filter=spectral_normed_weight(w), output_shape=output_shape, strides=[1, stride, stride, 1], padding='SAME')
+
+            if use_bias:
+                bias = tf.get_variable("bias", [channels], initializer=tf.constant_initializer(0.0))
+                x = tf.nn.bias_add(x, bias)
+
         x = tf.layers.conv2d_transpose(inputs=x, filters=channels,
                                        kernel_size=kernel, kernel_initializer=weight_init, kernel_regularizer=weight_regularizer,
                                        strides=stride, padding='SAME', use_bias=use_bias)
