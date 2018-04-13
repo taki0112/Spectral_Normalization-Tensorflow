@@ -53,10 +53,10 @@ def deconv(x, channels, kernel=4, stride=2, use_bias=True, sn=False, scope='deco
             if use_bias:
                 bias = tf.get_variable("bias", [channels], initializer=tf.constant_initializer(0.0))
                 x = tf.nn.bias_add(x, bias)
-
-        x = tf.layers.conv2d_transpose(inputs=x, filters=channels,
-                                       kernel_size=kernel, kernel_initializer=weight_init, kernel_regularizer=weight_regularizer,
-                                       strides=stride, padding='SAME', use_bias=use_bias)
+        else :
+            x = tf.layers.conv2d_transpose(inputs=x, filters=channels,
+                                           kernel_size=kernel, kernel_initializer=weight_init, kernel_regularizer=weight_regularizer,
+                                           strides=stride, padding='SAME', use_bias=use_bias)
 
         return x
 
